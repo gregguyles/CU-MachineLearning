@@ -1,0 +1,62 @@
+\begin{thebibliography}{1}
+
+\bibitem{SciPy}
+Eric Jones, Travis Oliphant, Pearu Peterson, et~al.
+\newblock {SciPy}: Open source scientific tools for {Python}.
+\newblock Available: http://www.scipy.org/, 2001--.
+
+\bibitem{scikit-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
+  D.~Cournapeau, M.~Brucher, M.~Perrot, and E.~Duchesnay.
+\newblock Scikit-learn: Machine learning in {P}ython.
+\newblock {\em Journal of Machine Learning Research}, 12:2825--2830, 2011.
+
+\bibitem{iPython}
+Fernando P\'erez and Brian~E. Granger.
+\newblock {IP}ython: a system for interactive scientific computing.
+\newblock {\em Computing in Science and Engineering}, 9(3):21--29, May 2007.
+
+\bibitem{ExtraTreesClassifier}
+scikit-learn developers.
+\newblock sklearn.ensemble.ExtraTreesClassifier.
+\newblock Available:
+  http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.ExtraTreesClassifier.html,
+  April 2014.
+
+\bibitem{chi2}
+scikit-learn developers.
+\newblock sklearn.feature\_selection.chi2.
+\newblock Available:
+  http://scikit-learn.org/stable/modules/generated/sklearn.feature\_selection.chi2.html,
+  April 2014.
+
+\bibitem{SelectKBest}
+scikit-learn developers.
+\newblock sklearn.feature\_selection.SelectKBest.
+\newblock Available:
+  http://scikit-learn.org/stable/modules/generated/sklearn.feature\_selection.SelectKBest.html,
+  April 2014.
+
+\bibitem{MultinomialNB}
+scikit-learn developers.
+\newblock sklearn.naive\_bayes.MultinomialNB.
+\newblock Available:
+  http://scikit-learn.org/stable/modules/generated/sklearn.naive\_bayes.MultinomialNB.html,
+  April 2014.
+
+\bibitem{Pipeline}
+scikit-learn developers.
+\newblock sklearn.pipeline.Pipeline.
+\newblock Available:
+  http://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html,
+  April 2014.
+
+\bibitem{workingText}
+scikit-learn developers.
+\newblock Working with Text Data.
+\newblock Available:
+  http://scikit-learn.org/dev/tutorial/text\_analytics/working\_with\_text\_data.html,
+  April 2014.
+
+\end{thebibliography}
