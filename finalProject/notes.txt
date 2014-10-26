@@ -1,0 +1,155 @@
+linSVM
+    - first run favored bigram, low C, and low max df runnign further grid search
+    to 
+    - second run showed and accuracy of 91% and max df of 75, experminting with lower max df for rbf
+    - firset kaggle submission 4/22
+        -linSVM estimated 91% kaggle test set reached 90%
+        - first place (for now)
+        -will further expeaiment with n-grams by eliminating uni-grams
+    -further search showed n-gram(1, 2) to be optimal on 4/22
+        -showed max_df at 0.1 to be optimal - this is courious as it is only using 10% of the data
+        -results were still at 91% no signifigent imporvment
+
+    Test Metrics Classification Report
+                 precision    recall  f1-score   support
+
+            neg       0.92      0.90      0.91      3181
+            pos       0.90      0.92      0.91      3069
+
+    avg / total       0.91      0.91      0.91      6250
+    Confusion Matrix:
+      2870     311
+       257    2812
+
+
+    unigrams and bigrams
+    0.77
+    0.77
+
+
+
+SVM rbf
+    - increased accuracy using trigrams
+    - running time 4/21 00:30 - 5/22 05:45
+            1d, 5h, 15m on an 8core/30gb machine
+    - next run evalutaing n-grams
+    - running time 4/23 13:40 - 4/24 3:00
+
+        Best Parameters:
+            clf__C: 500
+            vect__max_df: 0.1
+
+            score: 0.906080
+
+Combo Results
+    tested 0.89856 vs 0.90252 for linSVM
+    
+
+
+ExTree
+    running the full set ran into memory problems as expected
+    a memory error was reached when trying to convert the sparse matrix into a dense matrix on an 8core / 30 gb machine, 50gb machines are avaibule or could try testing a sub-set
+    - 4/23 testing extree with 10k training examples on an 8 core/ 56gb machine
+    -  fails with 20k, 10k
+    - 4k gave a differt error: failed to write numpy array
+    - dosen't seem tp parallize as intended
+    - 2k gave "no space left on device" with and showed 100% used storage
+    - giving up on (for now) think we should focus on svm
+    - use function that extracts the important features from the sparse matrix
+    - using l1 to reduce paramiters
+    - orig matrix 1,048,576
+
+        % of set    |   % of men (7.5GB)
+        ************************************ 10k features
+            05              11
+            10              11
+            20              20
+            40              32
+            80              62
+            100             46
+        ************************************ 20k
+            10              ME 25
+            20              ME 20
+
+        % of set    |   % of men (56GB)
+        ************************************ 
+            100         05      10k features 
+            100         10      20k
+            100         18      40k
+            100         35      80k
+            100         42      100k - running 5:33
+            100         ME      1M
+
+            50          42      100k - runnint 5:30
+            20          17      100K
+            50          41      100k
+            100         34      100k
+
+
+            using TfidVec
+            100         30      66,535
+
+            gs_ExTree
+                - seems to run when reduced to 80k features 100k is too mutch
+                    -uses 53% of 56GB
+                - either gives a memory error or will fail most likley due to memory
+
+        exicution upto 65.6% of 56gb compared to 5.4% of 30gb using svm
+
+
+        extree params 1
+            Best Parameters:
+            max_depth: 1024
+            min_samples_leaf: 8
+            min_samples_split: 16
+            100k paramaters
+            max_df = 0.1
+
+            score: 0.830080
+
+    Naive Bays
+        Best Parameters:
+            vect__max_df: 0.1
+            vect__ngram_range: (1, 3)
+            score: 0.883467
+
+
+Dynamic subset condition
+    if(subset):
+        dataset.data = dataset.data[:200] + dataset.data[len(dataset.data)-200:]
+        dataset.target = np.append(dataset.target[:200],
+                            dataset.target[len(dataset.target)-200:])
+
+Precision: of the ones the model classified as x this is the precentage that is acctually x
+
+Recall: of all the x targets this is the precentage that the model classified as x
+
+Report outline
+
+    Describe the virtual platform and software used
+        - google compute cloud instinces up to 8core / 56gb (mostley 30)
+        - numpy, scipy, scikit-learn, ipython
+
+    First model: linear SVM
+        - picked for low exicution time for faster paramater search
+            - explane params tested and ones found optimal
+        - proformed exaustive grid search using single fold cross-validation 88%
+        - the preformed refiend grid search using 10 fold cross-validatin 91%
+        - f1 score genorated from a 25% held out set
+
+    Second model: RBF SVM
+        - picked to see a higher demential model would improve prediction
+        - follow same format as above
+
+    Third model: Extra Tree Classifier
+        - picked because it had scucess in the previous project
+        - ran into memeory probems as the ExtraTreeClassifier requires dense matrices
+        - dense sparce matrice explination and scipy explinaiton
+        - could only train severl hundred examples and showed poor preformace (~65%)
+        - 56gb not enough memory
+
+    Instering observation (will evaluate further):
+        - inclusion of bigrams clearly helped preformace
+            - look at bigrams only, including trigrams
+        - high df_max values also helped preformace
+            - cut out the most common n-grams, as much as 70% or 90%

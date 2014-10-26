@@ -1,0 +1,23 @@
+[NotebookApp] Using existing profile dir: u'/home/gregor/.ipython/profile_nbserver'
+[NotebookApp] Serving notebooks from /home/gregor/ipyServer/movie_review/ipy_notebook
+[NotebookApp] The IPython Notebook is running at: https://[all ip addresses on your system]:9980/
+[NotebookApp] Use Control-C to stop this server and shut down all kernels.
+WARNING:root:Read error on 6: [Errno 1] _ssl.c:1415: error:14094418:SSL routines:SSL3_READ_BYTES:tlsv1 alert unknown ca
+WARNING:root:error on read
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/dist-packages/tornado/iostream.py", line 354, in _handle_read
+    if self._read_to_buffer() == 0:
+  File "/usr/lib/python2.7/dist-packages/tornado/iostream.py", line 421, in _read_to_buffer
+    chunk = self._read_from_socket()
+  File "/usr/lib/python2.7/dist-packages/tornado/iostream.py", line 696, in _read_from_socket
+    chunk = self.socket.read(self.read_chunk_size)
+  File "/usr/lib/python2.7/ssl.py", line 160, in read
+    return self._sslobj.read(len)
+SSLError: [Errno 1] _ssl.c:1415: error:14094418:SSL routines:SSL3_READ_BYTES:tlsv1 alert unknown ca
+[NotebookApp] Using system MathJax
+[NotebookApp] Kernel started: 05189077-c3a1-4b71-bbcd-bf03a95d9006
+[IPKernelApp] To connect another client to this kernel, use:
+[IPKernelApp] --existing kernel-05189077-c3a1-4b71-bbcd-bf03a95d9006.json --profile nbserver
+[NotebookApp] Connecting to: tcp://127.0.0.1:50395
+[NotebookApp] Connecting to: tcp://127.0.0.1:56590
+[NotebookApp] Connecting to: tcp://127.0.0.1:43690

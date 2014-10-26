@@ -1,0 +1,4 @@
+>> run
+Finished dist_1 in 16.179 seconds
+Finished dist_2 in 0.136 seconds
+Max difference between distance matrices is 1.421085e-14
